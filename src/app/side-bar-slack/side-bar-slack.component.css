@@ -1,0 +1,117 @@
+.sideBar-container {
+  height: 100%;
+  width: 16.5rem;
+  background-color: #3f0e40;
+  border-top: 1px solid #4f2350;
+
+}
+
+.s-b-userStatus-con {
+  height: 3rem;
+  width: 100%;
+  border-bottom: 2px solid #4f2350;
+  color: white;
+}
+.s-b-browserSlack-con {
+  height: 3rem;
+  width: 100%;
+  color: white;
+}
+
+.s-b-channel {
+  height: 10.2rem;
+  width: 100%;
+
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.innerChannelContainer {
+  height: 36px;
+  width: 85%;
+
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.channelBoxs {
+  height: 28px;
+  width: 78%;
+  border: 2px solid #4f2350;
+  margin-bottom: 0.5rem;
+}
+.dmSection{
+  height: 2.8rem;
+  width: 78%;
+  margin-top: 1rem;
+}
+.dmBoxes{
+  width: 78%;
+  border: 2px solid red;
+    margin-top: 0.5rem;
+}
+.channelBox-container {
+  width: 80%;
+
+}
+
+
+
+
+.optionChannel {
+  background: rgb(255, 255, 255);
+  height: 4rem;
+  width: 11rem;
+  position: absolute;
+  top: 14rem;
+  left: 5rem;
+  padding: 0.5rem;
+  padding-left: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.m-c-box1 {
+  height: 50%;
+  width: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-family: "Larsseit";
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.m-c-box1:hover{
+  text-decoration: underline;
+}
+
+.newChannelContainer{
+  height: 35rem;
+  width: 30rem;
+  position: absolute;
+  border: 2px solid red;
+  top: 20vh;
+  left: 50vw;
+  transform: translate(-50%,-50%);
+  z-index: 5;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  border-radius: 0.5rem;
+}
+
+
+.btnNewChannel{
+height: 2.5rem;
+width: 80%;
+}
+.addChannelBox button{
+height: 100%;
+width: 100%;
+border: none;
+font-size: 1rem;
+font-weight: 400;
+}

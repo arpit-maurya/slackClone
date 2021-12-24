@@ -1,0 +1,22 @@
+<div class="sideBar-container">
+  <div class="s-b-userStatus-con">dff</div>
+  <div class="s-b-browserSlack-con">browserSlack</div>
+  <div class="s-b-channel">
+    <div class="innerChannelContainer">Channel</div>
+    <div class="channelBox-container">
+      <div class="channelBoxs ng" *ngFor="let item of newDataArr" (click)="updateChannelname($event)">{{item}}</div>
+    </div>
+    
+     <div class="btnNewChannel">
+      <button mat-button (click)="openDialog()">
+        Create New Channel
+      </button>
+     </div>
+
+     <div class="dmSection">Dm Section</div>
+     <div class="dmBoxes" *ngFor="let item of this.dataService.dmChannelArr">
+      {{item}}
+     </div>
+    
+  </div>
+</div>

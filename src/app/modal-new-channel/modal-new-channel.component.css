@@ -1,0 +1,32 @@
+.newChannel-Main-container{
+ height: 100%;
+ width: 100%;
+
+}
+
+.text1{
+height: 2rem;
+width: 100%;
+font-size: 1.2rem;
+}
+
+.inputBox{
+ 
+ height: 2.5rem;
+}
+
+.submitButton{
+ height: 2.5rem;
+ margin-top: 1rem;
+}
+.submitButton button{
+
+ outline: none;
+ background-color: orange;
+}
+
+.inputBox input{
+
+ height: 100%;
+ width: 100%;
+}

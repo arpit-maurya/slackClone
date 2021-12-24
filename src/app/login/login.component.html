@@ -1,0 +1,26 @@
+<div class="login-mainContainer">
+  <div class="innerComponent-login">
+    <div class="signMain-inner-container-image">
+      <img src="https://a.slack-edge.com/bv1-9/slack_logo-ebd02d1.svg" alt="" />
+    </div>
+    <div class="text-1-enterEmail">First, enter your email</div>
+    <div class="text-2-emailAddressText">
+      We suggest using the <label>email address you use at work</label>
+    </div>
+    <div class="inputBox-enterEmail">
+      <div class="input-group mb-3"   style=" height: 100% ">
+        <input
+          type="text"
+          class="form-control"
+          (keyup)="getLoginData($event)"
+          placeholder=""
+          aria-label=""
+          aria-describedby="basic-addon1"
+          placeholder="name@work-gmail.com"
+        />
+      </div>
+    </div>
+
+    <div class="continueOption">Continue </div>
+  </div>
+</div>

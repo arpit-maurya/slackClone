@@ -1,0 +1,32 @@
+<div class="contentGrid-container">
+  <div class="c-g-randomArea"></div>
+  <div class="c-g-bookMark"></div>
+  <div class="c-g-chatArea">
+    <div class="actualChatArea" #mainBox>
+      <div class="chatBox" *ngFor="let key of newDataArr">
+        <div class="ch-b-imgContainer">{{ key[2] }}</div>
+        <div class="ch-b-chatContainer">
+          <div class="ch-b-nameContainer" placeholder="Enter A Name">
+            <div (click)="createDMChannel(key[0])">{{ key[0] }}</div>
+          
+          </div>
+          <div class="ch-b-nameContainer">{{ key[1] }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="c-g-chatTextArea-Container">
+      <div class="inner-c-g-chatTextArea-Container">
+        <div class="c-g-chatTextArea">
+          <input
+            type="text"
+            (keyup.enter)="storeChatText($event)"
+            placeholder="Send a message to #"
+          />
+        </div>
+        <div class="emojiContainer">
+          <span class="material-icons-outlined"> emoji_emotions </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

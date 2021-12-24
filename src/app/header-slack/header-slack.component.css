@@ -1,0 +1,45 @@
+.slackHeader-container{
+ height: 2.5rem;
+ width: 100%;
+ position: relative;
+ background: #350d36;
+ box-shadow: 0 1px 0 0 rgba(255,255,255,0.1);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.headerContent-container{
+ height: 100%;
+ width: 50%;
+ position: absolute;
+
+ display: flex;
+ align-items: center;
+}
+.h-c-clockIocn{
+ height: 100%;
+ width: 5rem;
+
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.h-c-clockIocn span{
+ color: white;
+ font-size: 1.4rem;
+}
+.h-c-searchBox{
+ height: 70%;
+ width: 85%;
+
+border-radius: 0.3rem;
+background-color: #5d3d5e;
+box-shadow: 0 0 0 1px var(--saf-0),0 1px 3px 0 rgba(0,0,0,.08);
+  font-family: "Larsseit";
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+}
