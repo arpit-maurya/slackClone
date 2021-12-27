@@ -10,7 +10,6 @@ import { DataServiceService } from '../data-service.service';
   templateUrl: './content-grid.component.html',
   styleUrls: ['./content-grid.component.css'],
 })
-  
 export class ContentGridComponent implements OnInit {
   constructor(
     public db: AngularFireDatabase,
@@ -26,9 +25,13 @@ export class ContentGridComponent implements OnInit {
       this.userFirstLetter = authState?.email?.charAt(0);
       this.userGamilName = authState?.email;
     });
-    this.updateChat();
   }
   storeChatText(e: any) {
+    if (this.dataService.selectedDm.search('@')) {
+    } else {
+      
+    }
+
     this.db.database
       .ref(this.dataService.selectedChannel + '/')
       .push()
@@ -36,35 +39,34 @@ export class ContentGridComponent implements OnInit {
         message: e.target.value,
         user: this.userGamilName,
         firstLetter: this.userFirstLetter,
+        channel: this.dataService.selectedChannel,
       });
-    this.updateChat();
-    this.genrateUserName();
   }
 
-  updateChat() {
-    this.newDataArr = this.dataService.createTextBox();
-  }
+  dmSection_1: any;
 
-  genrateUserName() {
-    this.af.authState.subscribe((authState) => {
-      console.log(authState?.email?.charAt(0));
-    });
-  }
-  
-  createDMChannel(name: any) {
-    let newUserName = this.userGamilName
+  createDMChannel(name: any): void {
+    let newUserName = this.userGamilName;
     newUserName = newUserName.split('.')[0];
-    let clickedUserName = name.split('.')[0]
-    let setDmSection = String(`privateChat/${newUserName}/${clickedUserName}`);
-    this.db.database.ref(setDmSection).push().set({
-      message: 'Private Chat',
-    }).then(() => {
-      this.dataService.getCreatedDm();
-    })
+    let clickedUserName = name.split('.')[0];
 
-    
-    setDmSection = String(`privateChat/${clickedUserName}/${newUserName}`);
-    this.db.database
+    let setDmSection = String(`privateChat/${newUserName}/${clickedUserName}`);
+this.dmSection_1 =setDmSection
+    let checkReturnValue_1: boolean = false;
+    this.db.database.ref(setDmSection).on('value', (snapshotChanges) => {
+      const newData = snapshotChanges.val();
+      let items: any = [];
+      Object.keys(newData).map((key, i) => {
+        if (i == 0) {
+          if (newData[key].message == 'Private Chat') {
+            checkReturnValue_1 = true;
+          }
+        }
+      });
+    });
+
+    if (!checkReturnValue_1) {
+      this.db.database
       .ref(setDmSection)
       .push()
       .set({
@@ -73,11 +75,38 @@ export class ContentGridComponent implements OnInit {
       .then(() => {
         this.dataService.getCreatedDm();
       });
+    }
+
+    setDmSection = String(`privateChat/${clickedUserName}/${newUserName}`);
 
 
+     let checkReturnValue_2: boolean = false;
+     this.db.database.ref(setDmSection).on('value', (snapshotChanges) => {
+       const newData = snapshotChanges.val();
+       let items: any = [];
+       Object.keys(newData).map((key, i) => {
+         if (i == 0) {
+           if (newData[key].message == 'Private Chat') {
+             checkReturnValue_2 = true;
+           }
+         }
+       });
+     });
 
-      
+    if (!checkReturnValue_2) {
+       this.db.database
+         .ref(setDmSection)
+         .push()
+         .set({
+           message: 'Private Chat',
+         })
+         .then(() => {
+           this.dataService.getCreatedDm();
+         });
+    }
 
 
   }
+
+  checkUserHasCreatedOrNot() {}
 }

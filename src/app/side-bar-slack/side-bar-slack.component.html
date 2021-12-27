@@ -14,9 +14,9 @@
      </div>
 
      <div class="dmSection">Dm Section</div>
-     <div class="dmBoxes" *ngFor="let item of this.dataService.dmChannelArr">
+     <div class="dmBoxes" (click)="updateDm($event)" *ngFor="let item of this.dataService.dmChannelArr">
       {{item}}
      </div>
+    </div>
     
-  </div>
 </div>

@@ -12,6 +12,7 @@ import { DataServiceService } from "../data-service.service";
 })
 export class SideBarSlackComponent implements OnInit {
   timestamp = Date.now();
+
   dmList: any;
   newDataArr: any;
   constructor(
@@ -32,7 +33,7 @@ export class SideBarSlackComponent implements OnInit {
     this.dataService.getCreatedDm();
   }
   val: number = 0;
-  
+
   getCreatedChannel() {
     this.db.database.ref('channel/').on('value', (snapshotChanges) => {
       const newData = snapshotChanges.val();
@@ -43,9 +44,14 @@ export class SideBarSlackComponent implements OnInit {
       this.newDataArr = items;
     });
   }
+
   updateChannelname(element: any) {
     this.dataService.selectedChannel = element.target.innerHTML;
     this.dataService.createTextBox();
   }
 
+  updateDm(element: any) {
+    this.dataService.selectedDm =this.dataService.userName+'/'+element.target.innerHTML;
+    this.dataService.createDmTextBox();
+  }
 }

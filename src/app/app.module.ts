@@ -20,8 +20,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ModalNewChannelComponent } from './modal-new-channel/modal-new-channel.component'; 
 import { DataServiceService } from './data-service.service';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { SliderModule } from 'primeng/slider';
+import { ButtonModule } from 'primeng/button';
 
-
+import { ChipModule } from 'primeng/chip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,9 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     BrowserModule,
     MatDialogModule,
     PickerModule,
+    ChipModule,
+    BrowserAnimationsModule,
+    ButtonModule,
     AngularFireModule.initializeApp(
       environment.firebaseConfig,
       'angular-auth-firebase'
@@ -45,7 +50,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,
-  
+    SliderModule,
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent],

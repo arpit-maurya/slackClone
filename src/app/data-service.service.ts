@@ -9,6 +9,9 @@ export class DataServiceService implements OnInit {
   
   constructor(public db: AngularFireDatabase, public af: AngularFireAuth) {}
   selectedChannel: any;
+  chatDataBox: any;
+  
+  selectedDm: any;
   ngOnInit(): void {
     this.db.database.ref('channel/').on('value', (snapshotChanges) => {
       const newData = snapshotChanges.val();
@@ -23,10 +26,10 @@ export class DataServiceService implements OnInit {
   }
 
   createTextBox(): any {
-    let newDataArr: any = [];
     this.db.database
       .ref(this.selectedChannel + '/')
       .on('value', (snapshotChanges) => {
+        let newDataArr: any = [];
         const newData = snapshotChanges.val();
         Object.keys(newData).map((key) => {
           let items = [];
@@ -34,9 +37,28 @@ export class DataServiceService implements OnInit {
           items.push(newData[key].message);
           items.push(newData[key].firstLetter);
           newDataArr.push(items);
+          console.log(newDataArr);
+          
         });
+        this.chatDataBox = newDataArr
       });
-    return newDataArr;
+  }
+  createDmTextBox(): any {
+    this.db.database
+      .ref('privateChat' + this.selectedDm + '/')
+      .on('value', (snapshotChanges) => {
+        let newDataArr: any = [];
+        const newData = snapshotChanges.val();
+        Object.keys(newData).map((key) => {
+          let items = [];
+          items.push(newData[key].user);
+          items.push(newData[key].message);
+          items.push(newData[key].firstLetter);
+          newDataArr.push(items);
+          console.log(newDataArr);
+        });
+        this.chatDataBox = newDataArr;
+      });
   }
   dmChannelArr: any;
   userName: any =localStorage.getItem('user')
@@ -45,7 +67,6 @@ export class DataServiceService implements OnInit {
     if (!this.userName) {
         this.af.authState.subscribe((authState) => {
           let userName: any = authState?.email;
-          
           this.userName = userName.split('.')[0];
         });
     }
@@ -53,9 +74,8 @@ export class DataServiceService implements OnInit {
     this.db.database
       .ref('privateChat/' + `${this.userName}` + '/')
       .on('value', (snapshotChanges) => {
-        const newData = snapshotChanges.val();
-        console.log(newData);
         
+        const newData = snapshotChanges.val();
         let items: any = [];
         Object.keys(newData).map((key) => {
           if (key == this.userName) {
@@ -65,6 +85,7 @@ export class DataServiceService implements OnInit {
         });
         this.newDataArr = items;
         this.dmChannelArr = this.newDataArr;
+        
       });
     
     }

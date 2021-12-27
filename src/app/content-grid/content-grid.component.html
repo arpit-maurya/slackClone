@@ -3,12 +3,11 @@
   <div class="c-g-bookMark"></div>
   <div class="c-g-chatArea">
     <div class="actualChatArea" #mainBox>
-      <div class="chatBox" *ngFor="let key of newDataArr">
+      <div class="chatBox" *ngFor="let key of this.dataService.chatDataBox">
         <div class="ch-b-imgContainer">{{ key[2] }}</div>
         <div class="ch-b-chatContainer">
           <div class="ch-b-nameContainer" placeholder="Enter A Name">
-            <div (click)="createDMChannel(key[0])">{{ key[0] }}</div>
-          
+            <div (click)="createDMChannel(key[0])" pm_1 = "dmSection_1">{{ key[0] }}</div>
           </div>
           <div class="ch-b-nameContainer">{{ key[1] }}</div>
         </div>
